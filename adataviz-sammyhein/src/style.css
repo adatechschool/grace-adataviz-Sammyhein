@@ -95,12 +95,70 @@ button:focus-visible {
   }
 } */
 
+.searchBar {
+  display: flex;
+  flex-direction: column;
+  gap : .25rem
+}
+
+input {
+  font-size: 1rem;
+}
+
+#event {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(150px));
+}
+
 .boite {
   background-color: aqua;
-
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 5%;
+  grid-row-gap: 1%;
+  align-items : center;
+  margin-bottom : 5%;
+  padding : 2%
 }
 
 .image{
-  
-  width: 25%;
+  width: 50vw ;
+
 }
+
+.boiteImage{
+  grid-area: 1 / 1 / 2 / 2;
+  background-color: brown; 
+  padding: 3%;
+  width: 100%;
+}
+
+.boiteText{
+  grid-area: 1 / 2 / 2 / 3;
+  
+  width: 100%;
+}
+
+.title{
+  font-size: 25px
+}
+
+.text {
+  font-size: 18px;
+}
+
+.boiteDescription{
+  grid-area: 2 / 1 / 3 / 3;
+  background-color: blueviolet;
+  width: 100%;
+  
+
+}
+.boutonSeeMore{
+  float: right;
+}
+
+.boutonSeeLess{
+  float: right;
+}
+

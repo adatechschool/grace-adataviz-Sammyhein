@@ -2,9 +2,11 @@ import './style.css'
 // import javascriptLogo from './javascript.svg'
 // import viteLogo from '/vite.svg'
 // import { setupCounter } from './counter.js'
+import { createBoutonSeeMore } from './boutonSeeMore.js';
 
 const api = document.getElementById('api')
 const event = document.getElementById('event')
+const eventTemplate = document.querySelector("[data-event-template]")
 
 
 // document.querySelector('#app').innerHTML = `
@@ -30,13 +32,15 @@ const event = document.getElementById('event')
 
 // https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/que-faire-a-paris-/records?limit=20
 
-async function fetchApi() {
+export async function fetchApi() {
   try {
     const response = await fetch(
       "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/que-faire-a-paris-/records?limit=20"
     );
     const apiData = await response.json();
     console.log(apiData);
+
+    //currentEvent = eventTemplate.content.cloneNode(true)
 
     for(let i = 0 ; i < apiData.results.length ; i++){
       //console.log(i)
@@ -45,25 +49,44 @@ async function fetchApi() {
       boite.className = "boite"
       event.appendChild(boite)
 
+      //Les Images
+      const boiteImage = document.createElement("div")
+      boiteImage.className = "boiteImage"
+      boite.appendChild(boiteImage)
+
       const image = document.createElement("img")
       image.className = "image"
       image.src = apiData.results[i].cover_url
-      boite.appendChild(image)
+      boiteImage.appendChild(image)
+      
+      //Les textes
+      const boiteText = document.createElement("div")
+      boiteText.className = "boiteText"
+      boite.appendChild(boiteText)
 
       const title = document.createElement("h1")
       title.className = "title"
       title.innerHTML = apiData.results[i].title
-      boite.appendChild(title)
+      boiteText.appendChild(title)
       
-      const text = document.createElement("h2")
+      const text = document.createElement("p")
       text.className = "text"
       text.innerHTML = apiData.results[i].lead_text
-      boite.appendChild(text)
+      boiteText.appendChild(text)
 
-      const description = document.createElement("p")
-      description.className = "description"
-      description.innerHTML = apiData.results[i].description
-      boite.appendChild(description)
+      //Description 
+      const boiteDescription = document.createElement("div")
+      boiteDescription.className = "boiteDescription"
+      boite.appendChild(boiteDescription)
+
+      //Les boutons 
+      const bouton = createBoutonSeeMore(apiData.results[i].description, boiteDescription)
+      boiteText.appendChild(bouton)
+
+      // const description = document.createElement("p")
+      // description.className = "description"
+      // description.innerHTML = apiData.results[i].description
+      // boiteText.appendChild(description)
 
     }
 
