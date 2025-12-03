@@ -95,51 +95,70 @@ button:focus-visible {
   }
 } */
 
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+:root{
+  --font-text: "Oswald", sans-serif;
+  color: #ccd0cf;
+}
+
+* {
+  font-family: var(--font-text);
+}
+
+body{
+  background-color: #0F0933;
+}
+
 .searchBar {
   display: flex;
   flex-direction: column;
-  gap : .25rem
+  gap : .25rem;
+  margin-bottom: 5%;
 }
 
 input {
   font-size: 1rem;
 }
 
-#event {
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(150px));
+.boite {
+  border-radius: 50px;
+  border-image: 3px solid transparent;
+  border-image: linear-gradient(to right, #44E8FB, #CF26D5) 1 ;
+  background-color: #4a5c6a;
+  padding: 2%;
+  margin-bottom: 5%;
 }
 
-.boite {
-  background-color: aqua;
+.imageEtText {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 5%;
   grid-row-gap: 1%;
   align-items : center;
-  margin-bottom : 5%;
-  padding : 2%
 }
 
 .image{
+  border-radius: 50px;
   width: 50vw ;
-
 }
 
+
 .boiteImage{
-  grid-area: 1 / 1 / 2 / 2;
-  background-color: brown; 
+  border-radius: 50px;
+  background-color: #06141b; 
   padding: 3%;
   width: 100%;
 }
 
 .boiteText{
-  grid-area: 1 / 2 / 2 / 3;
-  
+  /* background-color: aquamarine; */
+  padding: 3%;
   width: 100%;
 }
 
 .title{
+  text-transform: uppercase;
   font-size: 25px
 }
 
@@ -147,18 +166,25 @@ input {
   font-size: 18px;
 }
 
-.boiteDescription{
-  grid-area: 2 / 1 / 3 / 3;
-  background-color: blueviolet;
-  width: 100%;
-  
-
-}
 .boutonSeeMore{
+  margin-right: 2%;
+  border: 3px solid transparent;
+  border-image: linear-gradient(to right, #44E8FB, #CF26D5) 1 ;
+  text-transform: uppercase;
   float: right;
 }
 
 .boutonSeeLess{
+  text-transform: uppercase;
+  margin-right: 2%;
   float: right;
+}
+
+.hide{
+  display : none
+}
+
+.description{
+  /* background-color: violet; */
 }
 

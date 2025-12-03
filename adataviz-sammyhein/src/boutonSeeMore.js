@@ -23,7 +23,7 @@ export function createBoutonSeeMore (descriptionText, boite){
         const boutonSeeLess = document.createElement("button")
         boutonSeeLess.className = "boutonSeeLess"
         boutonSeeLess.innerText = "Voir Moins"
-        boite.appendChild(boutonSeeLess)
+        boite.querySelector(".boiteText").appendChild(boutonSeeLess)
 
         //Click Bouton See Less
         boutonSeeLess.addEventListener("click", () => {

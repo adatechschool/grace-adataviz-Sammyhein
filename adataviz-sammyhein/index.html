@@ -8,17 +8,25 @@
     <script type="module" defer src="/src/main.js"></script>
   </head>
   <body>
-    <div class = searchBar>
-      <label for="search">Recherchez</label>
-      <input type="search" placeholder="Rechercher" id = "search"> <button>Rechercher</button>
+    <div class = "searchBar">
+      <label for="search">Vous recherchez un événement en particulier ?</label>
+      <input type="search" placeholder="Rechercher" id = "search">
     </div>
     <div id = "event">
-      <h1>Hello</h1>
+      <!-- <h1>Hello</h1> -->
       <template data-event-template>
         <div class = "boite">
-          <div class = "boiteImage"></div>
-          <div class = "boiteTexte"></div>
-          <div class = "boiteDescription"></div>
+          <div class = "imageEtText">
+            <div class = "boiteImage">
+              <img class="image" alt="image_event">
+            </div>
+            <div class = "boiteText">
+              <h1 class="title"></h1>
+              <p class="text"></p>
+            </div>
+          </div>
+          <p class="description"></p>
+          
         </div>
       </template>
     </div>

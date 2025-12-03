@@ -3,6 +3,9 @@ import './style.css'
 // import viteLogo from '/vite.svg'
 // import { setupCounter } from './counter.js'
 import { createBoutonSeeMore } from './boutonSeeMore.js';
+// import { rechercheEvent } from './searchBar.js';
+
+// rechercheEvent()
 
 const api = document.getElementById('api')
 const event = document.getElementById('event')
@@ -40,55 +43,98 @@ export async function fetchApi() {
     const apiData = await response.json();
     console.log(apiData);
 
-    //currentEvent = eventTemplate.content.cloneNode(true)
 
-    for(let i = 0 ; i < apiData.results.length ; i++){
-      //console.log(i)
+    const searchInput = document.getElementById("search")
+    
+    let events = []
 
-      const boite = document.createElement("div")
-      boite.className = "boite"
-      event.appendChild(boite)
+    searchInput.addEventListener("input", e => {
+        const value = e.target.value.toLowerCase()
+        events.forEach( input =>{
+            const isVisible = input.titre.toLowerCase().includes(value)
+            input.element.classList.toggle("hide", !isVisible)
+            console.log(events)
+        })
+    })
+    
 
-      //Les Images
-      const boiteImage = document.createElement("div")
-      boiteImage.className = "boiteImage"
-      boite.appendChild(boiteImage)
+    events = apiData.results.map(evenement => {
+      //je lie et je clone mon template que j'ai mis dans mon html
+      const currentEvent = eventTemplate.content.cloneNode(true);
+      //console.log(evenement)
 
-      const image = document.createElement("img")
-      image.className = "image"
-      image.src = apiData.results[i].cover_url
-      boiteImage.appendChild(image)
+      //je définie mes éléments que j'ai mis dans le template HTML
+      const boite = currentEvent.querySelector(".boite");
+      const title = currentEvent.querySelector(".title");
+      const text = currentEvent.querySelector(".text");
+      const img = currentEvent.querySelector(".image");
+
+      // je remplie les éléments
+      img.src = evenement.cover_url;
+      title.textContent = evenement.title;
+      text.textContent = evenement.lead_text;
+
+      // Je n'oublie pas mon bouton
+      const bouton = createBoutonSeeMore(evenement.description, boite);
+      boite.querySelector(".boiteText").appendChild(bouton);
+
+      // j'affiche le résultat
+      event.appendChild(currentEvent);
+
+      // On demande ce qu'il nous retourne
+      return { image : evenement.cover_url , titre : evenement.title , text : evenement.lead_text , element : boite}
       
-      //Les textes
-      const boiteText = document.createElement("div")
-      boiteText.className = "boiteText"
-      boite.appendChild(boiteText)
+    });
 
-      const title = document.createElement("h1")
-      title.className = "title"
-      title.innerHTML = apiData.results[i].title
-      boiteText.appendChild(title)
+    // Version avec une boucle for 
+
+    // for(let i = 0 ; i < apiData.results.length ; i++){
+    //   //console.log(i)
+
+    //   const boite = document.createElement("div")
+    //   boite.className = "boite"
+    //   event.appendChild(boite)
+
+    //   //Les Images
+    //   const boiteImage = document.createElement("div")
+    //   boiteImage.className = "boiteImage"
+    //   boite.appendChild(boiteImage)
+
+    //   const image = document.createElement("img")
+    //   image.className = "image"
+    //   image.src = apiData.results[i].cover_url
+    //   boiteImage.appendChild(image)
       
-      const text = document.createElement("p")
-      text.className = "text"
-      text.innerHTML = apiData.results[i].lead_text
-      boiteText.appendChild(text)
+    //   //Les textes
+    //   const boiteText = document.createElement("div")
+    //   boiteText.className = "boiteText"
+    //   boite.appendChild(boiteText)
 
-      //Description 
-      const boiteDescription = document.createElement("div")
-      boiteDescription.className = "boiteDescription"
-      boite.appendChild(boiteDescription)
+    //   const title = document.createElement("h1")
+    //   title.className = "title"
+    //   title.innerHTML = apiData.results[i].title
+    //   boiteText.appendChild(title)
+      
+    //   const text = document.createElement("p")
+    //   text.className = "text"
+    //   text.innerHTML = apiData.results[i].lead_text
+    //   boiteText.appendChild(text)
 
-      //Les boutons 
-      const bouton = createBoutonSeeMore(apiData.results[i].description, boiteDescription)
-      boiteText.appendChild(bouton)
+    //   //Description 
+    //   const boiteDescription = document.createElement("div")
+    //   boiteDescription.className = "boiteDescription"
+    //   boite.appendChild(boiteDescription)
 
-      // const description = document.createElement("p")
-      // description.className = "description"
-      // description.innerHTML = apiData.results[i].description
-      // boiteText.appendChild(description)
+    //   //Les boutons 
+    //   const bouton = createBoutonSeeMore(apiData.results[i].description, boiteDescription)
+    //   boiteText.appendChild(bouton)
 
-    }
+    //   // const description = document.createElement("p")
+    //   // description.className = "description"
+    //   // description.innerHTML = apiData.results[i].description
+    //   // boiteText.appendChild(description)
+
+    // }
 
     return apiData;
   } catch (error) {
