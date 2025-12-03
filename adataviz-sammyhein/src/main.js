@@ -1,37 +1,12 @@
 import './style.css'
-// import javascriptLogo from './javascript.svg'
-// import viteLogo from '/vite.svg'
-// import { setupCounter } from './counter.js'
 import { createBoutonSeeMore } from './boutonSeeMore.js';
-// import { rechercheEvent } from './searchBar.js';
+import { showReturnBouton } from './returnBouton.js';
 
-// rechercheEvent()
 
-const api = document.getElementById('api')
 const event = document.getElementById('event')
 const eventTemplate = document.querySelector("[data-event-template]")
-
-
-// document.querySelector('#app').innerHTML = `
-//   <div>
-//     <a href="https://vite.dev" target="_blank">
-//       <img src="${viteLogo}" class="logo" alt="Vite logo" />
-//     </a>
-//     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-//       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-//     </a>
-//     <h1>Hello Vite!</h1>
-//     <div class="card">
-//       <button id="counter" type="button"></button>
-//     </div>
-//     <p class="read-the-docs">
-//       Click on the Vite logo to learn more
-//     </p>
-//   </div>
-// `
-
-// setupCounter(document.querySelector('#counter'))
-
+const searchInput = document.getElementById("search")
+const returnBouton = document.getElementById("returnBouton")
 
 // https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/que-faire-a-paris-/records?limit=20
 
@@ -43,18 +18,29 @@ export async function fetchApi() {
     const apiData = await response.json();
     console.log(apiData);
 
-
-    const searchInput = document.getElementById("search")
     
     let events = []
 
     searchInput.addEventListener("input", e => {
-        const value = e.target.value.toLowerCase()
+        let value = e.target.value.trim().toLowerCase()
+
+        let hasResults = false //ceci va me servir quand il n'y aura pas de résultat
+
         events.forEach( input =>{
             const isVisible = input.titre.toLowerCase().includes(value)
             input.element.classList.toggle("hide", !isVisible)
-            console.log(events)
+            //console.log(events)
+            if (isVisible){
+              hasResults = true // si il y a au moins 1 resultat qui s'affiche alors on le transforme à true
+              returnBouton.hidden = true
+            }
         })
+
+        if (!hasResults){ // si il n'y a pas de "isVisible", et donc que hasResults reste false alors on m'indique une erreur
+          console.log("erreur")
+          returnBouton.hidden = false
+          showReturnBouton(searchInput)
+        }
     })
     
 
@@ -85,56 +71,6 @@ export async function fetchApi() {
       return { image : evenement.cover_url , titre : evenement.title , text : evenement.lead_text , element : boite}
       
     });
-
-    // Version avec une boucle for 
-
-    // for(let i = 0 ; i < apiData.results.length ; i++){
-    //   //console.log(i)
-
-    //   const boite = document.createElement("div")
-    //   boite.className = "boite"
-    //   event.appendChild(boite)
-
-    //   //Les Images
-    //   const boiteImage = document.createElement("div")
-    //   boiteImage.className = "boiteImage"
-    //   boite.appendChild(boiteImage)
-
-    //   const image = document.createElement("img")
-    //   image.className = "image"
-    //   image.src = apiData.results[i].cover_url
-    //   boiteImage.appendChild(image)
-      
-    //   //Les textes
-    //   const boiteText = document.createElement("div")
-    //   boiteText.className = "boiteText"
-    //   boite.appendChild(boiteText)
-
-    //   const title = document.createElement("h1")
-    //   title.className = "title"
-    //   title.innerHTML = apiData.results[i].title
-    //   boiteText.appendChild(title)
-      
-    //   const text = document.createElement("p")
-    //   text.className = "text"
-    //   text.innerHTML = apiData.results[i].lead_text
-    //   boiteText.appendChild(text)
-
-    //   //Description 
-    //   const boiteDescription = document.createElement("div")
-    //   boiteDescription.className = "boiteDescription"
-    //   boite.appendChild(boiteDescription)
-
-    //   //Les boutons 
-    //   const bouton = createBoutonSeeMore(apiData.results[i].description, boiteDescription)
-    //   boiteText.appendChild(bouton)
-
-    //   // const description = document.createElement("p")
-    //   // description.className = "description"
-    //   // description.innerHTML = apiData.results[i].description
-    //   // boiteText.appendChild(description)
-
-    // }
 
     return apiData;
   } catch (error) {

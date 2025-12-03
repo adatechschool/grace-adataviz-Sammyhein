@@ -99,7 +99,7 @@ button:focus-visible {
 
 :root{
   --font-text: "Oswald", sans-serif;
-  color: #ccd0cf;
+  color: #e8efee;
 }
 
 * {
@@ -108,9 +108,18 @@ button:focus-visible {
 
 body{
   background-color: #0F0933;
+  margin-right: 15%;
+  margin-left: 15%;
 }
 
+#title{
+  color: #44E8FB;
+  text-transform: uppercase;
+}
+
+
 .searchBar {
+  text-transform: uppercase;
   display: flex;
   flex-direction: column;
   gap : .25rem;
@@ -118,16 +127,41 @@ body{
 }
 
 input {
+  border-radius: 50px;
+  border: 1px solid transparent;
+  background: none;
+  width: 80%;
+  color: white;
   font-size: 1rem;
+  background:
+    linear-gradient(#02052b, #02052b) padding-box,
+    linear-gradient(135deg, #44E8FB, #CF26D5) border-box;
+  padding: 10px 15px;
+}
+
+input:focus{
+ outline: none;
+}
+
+input::placeholder{
+ color: #ced1d1;
+ font-size: 1rem;
 }
 
 .boite {
   border-radius: 50px;
-  border-image: 3px solid transparent;
-  border-image: linear-gradient(to right, #44E8FB, #CF26D5) 1 ;
-  background-color: #4a5c6a;
+  border: 3px solid transparent; /* on garde une bordure transparente */
   padding: 2%;
   margin-bottom: 5%;
+
+  /* 1er gradient = fond de la carte
+     2e gradient = bordure dégradée */
+  background:
+    linear-gradient(#02052b, #02052b) padding-box,
+    linear-gradient(135deg, #44E8FB, #CF26D5) border-box;
+  position: relative;
+  
+  
 }
 
 .imageEtText {
@@ -140,16 +174,25 @@ input {
 
 .image{
   border-radius: 50px;
+  padding: 1%;
+  margin-bottom: 5%;
+
+  /* 1er gradient = fond de la carte
+     2e gradient = bordure dégradée */
+  background:
+    linear-gradient(135deg, #44E8FB, #CF26D5) border-box;
+  max-width: 400px;
+  max-height: 400px;
   width: 50vw ;
 }
 
 
-.boiteImage{
+/* .boiteImage{
   border-radius: 50px;
   background-color: #06141b; 
   padding: 3%;
   width: 100%;
-}
+} */
 
 .boiteText{
   /* background-color: aquamarine; */
@@ -162,22 +205,27 @@ input {
   font-size: 25px
 }
 
+
 .text {
   font-size: 18px;
 }
 
 .boutonSeeMore{
+  border-radius: 24px;
+  color: white;
   margin-right: 2%;
-  border: 3px solid transparent;
-  border-image: linear-gradient(to right, #44E8FB, #CF26D5) 1 ;
+  border-style : none;
+  background: linear-gradient(135deg, #44E8FB,  #CF26D5);
   text-transform: uppercase;
-  float: right;
 }
 
 .boutonSeeLess{
-  text-transform: uppercase;
+  border-radius: 24px;
+  color: white;
   margin-right: 2%;
-  float: right;
+  border-style : none;
+  background: linear-gradient(135deg, #44E8FB,  #CF26D5);
+  text-transform: uppercase;
 }
 
 .hide{
@@ -188,3 +236,139 @@ input {
   /* background-color: violet; */
 }
 
+#returnBouton{
+  text-align: center;
+}
+
+#texteDesole{
+  text-transform: uppercase;
+}
+
+#texteColor{
+  color: #CF26D5;
+}
+
+#boutonRetour{
+  border-radius: 24px;
+  color: white;
+  margin-right: 2%;
+  border-style : none;
+  background: linear-gradient(135deg, #44E8FB,  #CF26D5);
+  text-transform: uppercase;
+}
+
+
+@media (max-width: 1024px) { 
+ 
+  #title {
+    justify-self : center ;
+  }
+  
+  .searchBar {
+  font-size: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap : .25rem;
+  margin-bottom: 5%;
+  align-items : center
+  }
+  
+  .imageEtText {
+  display: flex;
+  flex-direction: column;
+  grid-column-gap: 5%;
+  grid-row-gap: 1%;
+  align-items : center;
+}
+
+.boiteText{
+  text-align: center;
+}
+
+.title{
+  margin-left: 15%;
+  margin-right: 15%;
+  font-size: 16px;
+  text-align: center;
+}
+  
+.text{
+  font-size: 14px ;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+
+}
+
+.boutonSeeMore{
+  text-align: center
+}
+
+
+.description{
+  /* background-color: violet; */
+  font-size: 14px ;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+}
+
+
+@media (max-width: 600px) { 
+  
+  #title {
+    justify-self : center ;
+  }
+  
+  .searchBar {
+  font-size: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap : .25rem;
+  margin-bottom: 5%;
+  align-items : center
+  }
+  
+  .imageEtText {
+  display: flex;
+  flex-direction: column;
+  grid-column-gap: 5%;
+  grid-row-gap: 1%;
+  align-items : center;
+}
+
+.boiteText{
+  text-align: center;
+}
+
+.title{
+  margin-left: 15%;
+  margin-right: 15%;
+  font-size: 12px;
+  text-align: center;
+}
+  
+.text{
+  font-size: 12px ;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+
+}
+
+.boutonSeeMore{
+  text-align: center
+}
+
+
+.description{
+  /* background-color: violet; */
+  font-size: 10px ;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+  
+}

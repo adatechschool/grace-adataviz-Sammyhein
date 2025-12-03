@@ -8,6 +8,7 @@
     <script type="module" defer src="/src/main.js"></script>
   </head>
   <body>
+    <h1 id = "title">Que faire à Paris ?</h1>
     <div class = "searchBar">
       <label for="search">Vous recherchez un événement en particulier ?</label>
       <input type="search" placeholder="Rechercher" id = "search">
@@ -17,9 +18,9 @@
       <template data-event-template>
         <div class = "boite">
           <div class = "imageEtText">
-            <div class = "boiteImage">
+            <!-- <div class = "boiteImage"> -->
               <img class="image" alt="image_event">
-            </div>
+            <!-- </div> -->
             <div class = "boiteText">
               <h1 class="title"></h1>
               <p class="text"></p>
@@ -30,6 +31,9 @@
         </div>
       </template>
     </div>
-    <!-- <div id="app"></div> -->
+    <div id = "returnBouton" hidden> 
+      <h2 id="texteDesole"> Désolé ! <br> Cet événement n'existe pas dans notre liste</h2>
+      <h3 id = "texteColor">Appuyez sur le bouton pour refaire votre recherche !</h3>
+      <button id ="boutonRetour">Retour</button></div>
   </body>
 </html>
