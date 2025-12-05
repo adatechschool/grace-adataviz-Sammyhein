@@ -1,141 +1,84 @@
-/* :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
-
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
 :root{
-  --font-text: "Oswald", sans-serif;
-  color: #e8efee;
+  --font-text: "Josefin Sans", sans-serif;
+  --color-white: #e8efee;
+  --color-font-one: #e8efee;
+  --color-font-two :#49dcea;
+  --color-font-three :#dc6de8;
+  --color-one: #0d151e;
+  --color-two: #00a0ad;
+  --color-three: #5e0567;
+  --color-four:#26012a;
 }
 
 * {
   font-family: var(--font-text);
 }
 
+a{
+  color: var(--color-four);
+}
+
 body{
-  background-color: #0F0933;
-  margin-right: 15%;
-  margin-left: 15%;
+  background: linear-gradient(135deg, var(--color-one), var(--color-four));
+}
+
+header{
+  background: 
+  linear-gradient(135deg, var(--color-one), var(--color-four));
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  margin-right: 10%;
+  position: fixed;
+  z-index: 1000;
+  top :0 ;
+}
+
+#header-container{
+  justify-items: center;
 }
 
 #title{
-  color: #44E8FB;
+  font-size: 50px;
+  color: var(--color-font-one);
   text-transform: uppercase;
 }
 
+label{
+  font-weight: 900;
+  color: var(--color-font-two);
+  margin-bottom: 5%;
+}
+
+#search{
+  width: 50vw;
+  align-self: center;
+}
 
 .searchBar {
+  align-items: center;
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
   gap : .25rem;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 }
 
 input {
+  font-weight: 900;
   border-radius: 50px;
   border: 1px solid transparent;
   background: none;
   width: 80%;
-  color: white;
+  color: var(--color-font-one);
   font-size: 1rem;
   background:
-    linear-gradient(#02052b, #02052b) padding-box,
-    linear-gradient(135deg, #44E8FB, #CF26D5) border-box;
+    linear-gradient(var(--color-one), var(--color-four)) padding-box,
+    linear-gradient(135deg, var(--color-two), var(--color-three)) border-box;
   padding: 10px 15px;
 }
 
@@ -144,11 +87,23 @@ input:focus{
 }
 
 input::placeholder{
- color: #ced1d1;
+ font-weight: 900;
+ color: var(--color-font-two);
  font-size: 1rem;
 }
 
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+#event{
+  margin-top: 20%;
+  margin-right: 15%;
+  margin-left: 15%;
+}
+
 .boite {
+  color: var(--color-font-one);
   border-radius: 50px;
   border: 3px solid transparent; /* on garde une bordure transparente */
   padding: 2%;
@@ -157,14 +112,16 @@ input::placeholder{
   /* 1er gradient = fond de la carte
      2e gradient = bordure dégradée */
   background:
-    linear-gradient(#02052b, #02052b) padding-box,
-    linear-gradient(135deg, #44E8FB, #CF26D5) border-box;
+    linear-gradient(var(--color-one), var(--color-four)) padding-box,
+    linear-gradient(135deg, var(--color-two), var(--color-three)) border-box;
   position: relative;
   
   
 }
 
 .imageEtText {
+  margin-left: 3%;
+  margin-right: 3%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 5%;
@@ -175,24 +132,15 @@ input::placeholder{
 .image{
   border-radius: 50px;
   padding: 1%;
-  margin-bottom: 5%;
 
   /* 1er gradient = fond de la carte
      2e gradient = bordure dégradée */
   background:
-    linear-gradient(135deg, #44E8FB, #CF26D5) border-box;
+    linear-gradient(135deg,var(--color-two), var(--color-three)) border-box;
   max-width: 400px;
   max-height: 400px;
   width: 50vw ;
 }
-
-
-/* .boiteImage{
-  border-radius: 50px;
-  background-color: #06141b; 
-  padding: 3%;
-  width: 100%;
-} */
 
 .boiteText{
   /* background-color: aquamarine; */
@@ -201,30 +149,43 @@ input::placeholder{
 }
 
 .title{
+  color: var(--color-font-three);
   text-transform: uppercase;
   font-size: 25px
 }
 
+.dateStart{
+  color: var(--color-font-two);
+}
+
+.dateEnd{
+  color: var(--color-font-three);
+}
 
 .text {
+  text-align: justify;
   font-size: 18px;
 }
 
 .boutonSeeMore{
+  font-weight: 1000;
+  padding: 2%;
   border-radius: 24px;
   color: white;
   margin-right: 2%;
   border-style : none;
-  background: linear-gradient(135deg, #44E8FB,  #CF26D5);
+  background: linear-gradient(135deg, var(--color-two), var(--color-three));
   text-transform: uppercase;
 }
 
 .boutonSeeLess{
+  font-weight: 1000;
+  padding: 2%;
   border-radius: 24px;
   color: white;
   margin-right: 2%;
   border-style : none;
-  background: linear-gradient(135deg, #44E8FB,  #CF26D5);
+  background: linear-gradient(135deg, var(--color-two), var(--color-three));
   text-transform: uppercase;
 }
 
@@ -233,35 +194,72 @@ input::placeholder{
 }
 
 .description{
+  margin-left: 3%;
+  margin-right: 3%;
+  text-align: justify;
   /* background-color: violet; */
 }
 
+img{
+  max-width: 500px;
+}
+
+
 #returnBouton{
+  margin-top: 20%;
   text-align: center;
 }
 
 #texteDesole{
+  color: var(--color-font-one);
   text-transform: uppercase;
 }
 
 #texteColor{
-  color: #CF26D5;
+  color: var(--color-font-three);
 }
 
 #boutonRetour{
+  font-weight: 1000;
+  max-width: 1000px;
+  padding: 1.5%;
   border-radius: 24px;
   color: white;
   margin-right: 2%;
   border-style : none;
-  background: linear-gradient(135deg, #44E8FB,  #CF26D5);
+  background: linear-gradient(135deg, var(--color-four), var(--color-three));
   text-transform: uppercase;
 }
 
 
 @media (max-width: 1024px) { 
+
+  #header-container{
+    margin-left: 3%;
+    margin-right: 5%;
+  }
  
   #title {
+    font-size: 60px;
     justify-self : center ;
+  }
+
+  label{
+    font-size: 20px;
+  }
+
+ input::placeholder{
+ font-size: 20px;
+}
+
+  input{
+    font-size: 25px;
+  }
+
+  #event{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 32%;
   }
   
   .searchBar {
@@ -273,7 +271,7 @@ input::placeholder{
   margin-bottom: 5%;
   align-items : center
   }
-  
+
   .imageEtText {
   display: flex;
   flex-direction: column;
@@ -284,6 +282,10 @@ input::placeholder{
 
 .boiteText{
   text-align: center;
+}
+
+.image{
+  width: 80vw ;
 }
 
 .title{
@@ -317,8 +319,15 @@ input::placeholder{
 
 
 @media (max-width: 600px) { 
+
+  #header-container{
+    margin-left: 5%;
+    margin-right: 8%;
+  }
   
   #title {
+    font-size: 12px;
+    text-align: center;
     justify-self : center ;
   }
   
@@ -331,8 +340,19 @@ input::placeholder{
   margin-bottom: 5%;
   align-items : center
   }
+
+  #search {
+    width: 90%;
+  }
+
+  #event{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top:50%;
+  }
   
   .imageEtText {
+  margin-top: 5%;
   display: flex;
   flex-direction: column;
   grid-column-gap: 5%;
@@ -340,35 +360,68 @@ input::placeholder{
   align-items : center;
 }
 
+.image{
+  margin-bottom: 15%;
+  width: 60vw ;
+}
+
 .boiteText{
   text-align: center;
 }
 
 .title{
-  margin-left: 15%;
-  margin-right: 15%;
-  font-size: 12px;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 16px;
   text-align: center;
+  margin-bottom: 15%;
 }
   
 .text{
-  font-size: 12px ;
+  font-size: 14px ;
   margin-left: 10%;
   margin-right: 10%;
   text-align: center;
-
+  margin-bottom: 15%;
 }
 
 .boutonSeeMore{
-  text-align: center
+  text-align: center;
+  width: 80%;
+  height: 100%;
+  padding: 5%;
+}
+
+.boutonSeeLess{
+  text-align: center;
+  width: 80%;
+  height: 100%;
+  padding: 5%;
 }
 
 
 .description{
   /* background-color: violet; */
-  font-size: 10px ;
+  font-size: 12px ;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10%;
+}
+
+img{
+  max-width: 100px;
+}
+
+#returnBouton{
+  /* margin-top: 60%; */
+  text-align: center;
   margin-left: 10%;
   margin-right: 10%;
 }
-  
+
+#boutonRetour{
+  width: 100%;
+  height: 100%;
+  padding: 5%;
+}
 }

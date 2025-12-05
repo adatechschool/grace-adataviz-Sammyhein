@@ -8,21 +8,30 @@
     <script type="module" defer src="/src/main.js"></script>
   </head>
   <body>
-    <h1 id = "title">Que faire à Paris ?</h1>
-    <div class = "searchBar">
-      <label for="search">Vous recherchez un événement en particulier ?</label>
-      <input type="search" placeholder="Rechercher" id = "search">
+
+    <!-- HEADER  -->
+    <header>
+      <div id="header-container">
+        <h1 id = "title">Que faire à Paris ?</h1>
+
+        <!-- BARRE DE RECHERCHE -->
+        <div class = "searchBar">
+          <label for="search">Vous recherchez un événement en particulier ?</label>
+          <input type="search" placeholder="Rechercher" id = "search">
+        </div>
     </div>
+    </header>
+
+    <!-- EVENTS  -->
     <div id = "event">
-      <!-- <h1>Hello</h1> -->
       <template data-event-template>
         <div class = "boite">
           <div class = "imageEtText">
-            <!-- <div class = "boiteImage"> -->
               <img class="image" alt="image_event">
-            <!-- </div> -->
             <div class = "boiteText">
               <h1 class="title"></h1>
+              <p class = "dateStart"></p>
+              <p class = "dateEnd"></p>
               <p class="text"></p>
             </div>
           </div>
@@ -31,9 +40,18 @@
         </div>
       </template>
     </div>
+
+     <!-- BOUTON RETOUR -->
     <div id = "returnBouton" hidden> 
-      <h2 id="texteDesole"> Désolé ! <br> Cet événement n'existe pas dans notre liste</h2>
+      <h2 id="texteDesole"> Oups ! <br> Cet événement n'existe pas dans notre liste</h2>
       <h3 id = "texteColor">Appuyez sur le bouton pour refaire votre recherche !</h3>
-      <button id ="boutonRetour">Retour</button></div>
+      <button id ="boutonRetour">Retour</button>
+    </div>
+
+     <!-- BOUTON CHARGER PLUS -->
+    <!-- <div>
+      <button id="boutonChargerPlus">Charger Plus</button>
+    </div> -->
+
   </body>
 </html>
