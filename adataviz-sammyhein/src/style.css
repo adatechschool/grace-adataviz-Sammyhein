@@ -126,6 +126,7 @@ input[type="search"]::-webkit-search-cancel-button {
   margin-top: 20%;
   margin-right: 15%;
   margin-left: 15%;
+  position: relative;
 }
 
 .boite {
@@ -175,6 +176,22 @@ input[type="search"]::-webkit-search-cancel-button {
     linear-gradient(135deg,var(--color-two), var(--color-three)) border-box;
   max-width: 450px;
   max-height: 400px;
+}
+
+.tag{
+  font-weight: var(--font-weight-normal);
+  padding: 2%;
+  border-radius: 10px;
+  color: white;
+  margin-right: 2%;
+  border-style : none;
+  border: 1px solid transparent;
+  background: 
+    linear-gradient(var(--color-one), var(--color-four)) padding-box,
+    linear-gradient(135deg, var(--color-three), var(--color-six)) border-box;;
+  text-transform: uppercase;
+  font-size: 9px;
+
 }
 
 .boiteText{

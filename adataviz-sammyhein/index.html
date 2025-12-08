@@ -27,9 +27,13 @@
       <template data-event-template>
         <div class = "boite">
           <div class = "imageEtText">
-              <img class="image" alt="image_event">
+            <img class="image" alt="image_event">
+            <div class = "boutonFavoris">
+              <input type="checkbox" checked = "checked" id = "favorite" name="favorite-checkbox" value = "favorite-button">
+              <label for="favorite" class = "label-container"></label>
+            </div>
             <div class = "boiteText">
-              <div class = "tagName"></div>
+              <div class = "tags"></div>
               <p class = "lieu"></p>
               <h1 class="title"></h1>
               <p class="adress"></p>

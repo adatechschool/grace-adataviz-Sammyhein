@@ -31,7 +31,7 @@ async function fetchApi() {
         let hasResults = false //ceci va me servir quand il n'y aura pas de résultat
 
         events.forEach( input =>{
-            const isVisible = input.titre.toLowerCase().includes(value) || input.lieu.toLowerCase().includes(value) || input.adresse.toLowerCase().includes(value) || input.ville.toLowerCase().includes(value)
+            const isVisible = input.titre.toLowerCase().includes(value) || input.lieu?.toLowerCase().includes(value) || input.adresse?.toLowerCase().includes(value) || input.ville?.toLowerCase().includes(value) || input.tagName?.toLowerCase().includes(value)
             input.element.classList.toggle("hide", !isVisible)
             //console.log(events)
             if (isVisible){
@@ -55,7 +55,7 @@ async function fetchApi() {
       //je définie mes éléments que j'ai mis dans le template HTML
       const boite = currentEvent.querySelector(".boite");
       const img = currentEvent.querySelector(".image");
-      const tagName = currentEvent.querySelector(".tagName")
+      const tags = currentEvent.querySelector(".tags") // // début de code si je veux également ajouter les tags sur les cartes
       const lieu = currentEvent.querySelector(".lieu");
       const title = currentEvent.querySelector(".title");
       const adress = currentEvent.querySelector(".adress");
@@ -66,13 +66,24 @@ async function fetchApi() {
       // je remplie les éléments
       img.src = evenement.cover_url;
 
+      if (evenement.qfap_tags !== null){
+      let tagNames = evenement.qfap_tags.split(";")
 
+      for( let i = 0 ; i < tagNames.length ; i++){
+        let tag = document.createElement("button")
+        tag.className = "tag"
+        tag.textContent = tagNames[i]
+        tags.appendChild(tag)
+      }}
 
       lieu.textContent = evenement.address_name
 
       title.textContent = evenement.title;
 
-      adress.textContent = `${evenement.address_street}, ${evenement.address_zipcode} ${evenement.address_city}`
+
+      if(evenement.address_street !== null && evenement.address_zipcode !== null || evenement.address_city !== null){
+        adress.textContent = `${evenement.address_street}, ${evenement.address_zipcode} ${evenement.address_city}`
+      }
 
       if(evenement.date_start != null){
         //Cette partie je formate les dates pour l'afficher commme je le souhaite et l'heure
@@ -105,7 +116,7 @@ async function fetchApi() {
       event.appendChild(currentEvent);
 
       // On demande ce qu'il nous retourne
-      return { image : evenement.cover_url , titre : evenement.title , text : evenement.lead_text , lieu : evenement.address_name, adresse : evenement.address_street, ville : evenement.address_city , element : boite}
+      return { image : evenement.cover_url , tagName : evenement.qfap_tags, titre : evenement.title , text : evenement.lead_text , lieu : evenement.address_name, adresse : evenement.address_street, ville : evenement.address_city , element : boite}
       
     });
 
