@@ -1,6 +1,7 @@
 import './style.css'
 import { createBoutonSeeMore } from './boutonSeeMore.js';
 import { showReturnBouton } from './returnBouton.js';
+import { favorite } from './favoritebutton.js';
 //import { chargerPlus } from '../chargerPlus.js';
 
 
@@ -55,13 +56,15 @@ async function fetchApi() {
       //je définie mes éléments que j'ai mis dans le template HTML
       const boite = currentEvent.querySelector(".boite");
       const img = currentEvent.querySelector(".image");
-      const tags = currentEvent.querySelector(".tags") // // début de code si je veux également ajouter les tags sur les cartes
+      const favoris = currentEvent.querySelector(".boutonFavoris_container");
+      const tags = currentEvent.querySelector(".tags") 
       const lieu = currentEvent.querySelector(".lieu");
       const title = currentEvent.querySelector(".title");
       const adress = currentEvent.querySelector(".adress");
       const dateStart = currentEvent.querySelector(".dateStart");
       const dateEnd = currentEvent.querySelector(".dateEnd");
       const text = currentEvent.querySelector(".text");
+  
 
       // je remplie les éléments
       img.src = evenement.cover_url;
@@ -75,6 +78,8 @@ async function fetchApi() {
         tag.textContent = tagNames[i]
         tags.appendChild(tag)
       }}
+
+      favorite(favoris)
 
       lieu.textContent = evenement.address_name
 
