@@ -1,30 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
 :root{
   --font-text: "Josefin Sans", sans-serif;
   --color-white: #e8efee;
   --color-font-one: #e8efee;
-  --color-font-two :#49dcea;
-  --color-font-three :#dc6de8;
-  --color-one: #0d151e;
-  --color-two: #00a0ad;
-  --color-three: #5e0567;
-  --color-four:#26012a;
+  --color-font-two :#d9c075;
+  --color-font-three :#1cb582;
+  --font-weight-thin : 200 ;
+  --font-weight-normal : 400;
+  --font-weight-bold : 800; 
+  --color-one: #0b1e27;
+  --color-two: #d9c075;
+  --color-three: #b19235;
+  --color-four:#0c2b38;
+  --color-five:#1cb582;
+  --color-six :#116147;
 }
 
 * {
   font-family: var(--font-text);
+  font-weight: var(--font-weight-thin);
+  letter-spacing: 1.5px;
 }
 
 a{
-  color: var(--color-four);
+  color: var(--color-five);
 }
 
 body{
+  margin: 0;
   background: linear-gradient(135deg, var(--color-one), var(--color-four));
 }
+
+/* 
+----------HEADER----------
+*/
 
 header{
   background: 
@@ -32,7 +42,6 @@ header{
   background-size: cover;
   background-position: center;
   width: 100%;
-  margin-right: 10%;
   position: fixed;
   z-index: 1000;
   top :0 ;
@@ -45,18 +54,8 @@ header{
 #title{
   font-size: 50px;
   color: var(--color-font-one);
+  font-weight: var(--font-weight-thin);
   text-transform: uppercase;
-}
-
-label{
-  font-weight: 900;
-  color: var(--color-font-two);
-  margin-bottom: 5%;
-}
-
-#search{
-  width: 50vw;
-  align-self: center;
 }
 
 .searchBar {
@@ -68,10 +67,22 @@ label{
   margin-bottom: 2%;
 }
 
-input {
+label{
   font-weight: 900;
+  color: var(--color-font-two);
+  font-weight: var(--font-weight-normal);
+  margin-bottom: 5%;
+}
+
+#search{
+  width: 50vw;
+  align-self: center;
+}
+
+input {
+  font-weight: var(--font-weight-normal);
   border-radius: 50px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   background: none;
   width: 80%;
   color: var(--color-font-one);
@@ -80,6 +91,17 @@ input {
     linear-gradient(var(--color-one), var(--color-four)) padding-box,
     linear-gradient(135deg, var(--color-two), var(--color-three)) border-box;
   padding: 10px 15px;
+
+  /* Animation */
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+input:hover{
+  background: 
+    linear-gradient(var(--color-four), var(--color-one)) padding-box,
+    linear-gradient(135deg, var(--color-three), var(--color-two)) border-box;
+  transform: scale(1.05);
+
 }
 
 input:focus{
@@ -87,7 +109,7 @@ input:focus{
 }
 
 input::placeholder{
- font-weight: 900;
+ font-weight: var(--font-weight-normal);
  color: var(--color-font-two);
  font-size: 1rem;
 }
@@ -95,6 +117,10 @@ input::placeholder{
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
+
+/* 
+----------EVENTS----------
+*/
 
 #event{
   margin-top: 20%;
@@ -104,8 +130,8 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .boite {
   color: var(--color-font-one);
-  border-radius: 50px;
-  border: 3px solid transparent; /* on garde une bordure transparente */
+  border-radius: 25px;
+  border: 4px solid transparent; /* on garde une bordure transparente */
   padding: 2%;
   margin-bottom: 5%;
 
@@ -115,8 +141,17 @@ input[type="search"]::-webkit-search-cancel-button {
     linear-gradient(var(--color-one), var(--color-four)) padding-box,
     linear-gradient(135deg, var(--color-two), var(--color-three)) border-box;
   position: relative;
-  
-  
+
+  /* Animation */
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+
+.boite:hover{
+  background: 
+    linear-gradient(var(--color-four), var(--color-one)) padding-box,
+    linear-gradient(135deg, var(--color-five), var(--color-four)) border-box;
+  transform: scale(1.05);
 }
 
 .imageEtText {
@@ -130,16 +165,16 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .image{
-  border-radius: 50px;
+  margin-top: 3%;
+  border-radius: 25px;
   padding: 1%;
 
   /* 1er gradient = fond de la carte
      2e gradient = bordure dégradée */
   background:
     linear-gradient(135deg,var(--color-two), var(--color-three)) border-box;
-  max-width: 400px;
+  max-width: 450px;
   max-height: 400px;
-  width: 50vw ;
 }
 
 .boiteText{
@@ -148,45 +183,76 @@ input[type="search"]::-webkit-search-cancel-button {
   width: 100%;
 }
 
+.lieu{
+  font-size: 18px;
+  color : var(--color-two);
+  font-weight: var(--font-weight-thin);
+}
+
 .title{
   color: var(--color-font-three);
+  font-weight: var(--font-weight-normal);
   text-transform: uppercase;
   font-size: 25px
 }
 
+.adress{
+  color: var(--color-font-one);
+  font-weight: var(--font-weight-normal);
+}
+
 .dateStart{
   color: var(--color-font-two);
+  font-weight: var(--font-weight-bold);
 }
 
 .dateEnd{
   color: var(--color-font-three);
+  font-weight: var(--font-weight-bold);
 }
 
 .text {
+  font-weight: var(--font-weight-thin);
   text-align: justify;
   font-size: 18px;
 }
 
 .boutonSeeMore{
-  font-weight: 1000;
+  font-weight: var(--font-weight-bold);
   padding: 2%;
   border-radius: 24px;
   color: white;
   margin-right: 2%;
   border-style : none;
-  background: linear-gradient(135deg, var(--color-two), var(--color-three));
+  background: linear-gradient(135deg, var(--color-five), var(--color-six));
   text-transform: uppercase;
+
+  /* Animation */
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.boutonSeeMore:hover{
+  background: linear-gradient(135deg, var(--color-two), var(--color-three)); 
+  transform: scale(1.05);
 }
 
 .boutonSeeLess{
-  font-weight: 1000;
+  font-weight: var(--font-weight-bold);
   padding: 2%;
   border-radius: 24px;
-  color: white;
+  color: var(--color-font-one);
   margin-right: 2%;
   border-style : none;
   background: linear-gradient(135deg, var(--color-two), var(--color-three));
   text-transform: uppercase;
+
+  /* Animation */
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.boutonSeeLess:hover{
+  background: linear-gradient(135deg, var(--color-five), var(--color-six)); 
+  transform: scale(1.05);
 }
 
 .hide{
@@ -204,6 +270,10 @@ img{
   max-width: 500px;
 }
 
+/* 
+----------RETOUR----------
+*/
+
 
 #returnBouton{
   margin-top: 20%;
@@ -217,6 +287,7 @@ img{
 
 #texteColor{
   color: var(--color-font-three);
+  font-weight: var(--font-weight-bold);
 }
 
 #boutonRetour{
@@ -227,7 +298,7 @@ img{
   color: white;
   margin-right: 2%;
   border-style : none;
-  background: linear-gradient(135deg, var(--color-four), var(--color-three));
+  background: linear-gradient(135deg, var(--color-two), var(--color-three));
   text-transform: uppercase;
 }
 
@@ -285,18 +356,39 @@ img{
 }
 
 .image{
-  width: 80vw ;
+  margin-top: .5%;
+  min-width: 600px;
+}
+
+.lieu{
+  font-size: 22px;
 }
 
 .title{
   margin-left: 15%;
   margin-right: 15%;
-  font-size: 16px;
+  font-size: 30px;
   text-align: center;
 }
+
+/* .dateStart{
+  background-color: var(--color-two);
+  padding: 1%;
+  color: var(--color-font-one);
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+.dateEnd{
+  background-color: var(--color-five);
+  padding: 1%;
+  color: var(--color-font-one);
+  margin-left: 30%;
+  margin-right: 30%;
+} */
   
 .text{
-  font-size: 14px ;
+  font-size: 16px ;
   margin-left: 10%;
   margin-right: 10%;
   text-align: center;
@@ -304,7 +396,7 @@ img{
 }
 
 .boutonSeeMore{
-  text-align: center
+  text-align: center;
 }
 
 
@@ -313,6 +405,11 @@ img{
   font-size: 14px ;
   margin-left: 10%;
   margin-right: 10%;
+}
+
+#boutonRetour{
+  margin-top: 3%;
+  width: 30%;
 }
 
 }
@@ -324,11 +421,19 @@ img{
     margin-left: 5%;
     margin-right: 8%;
   }
+
+  .boite{
+    margin-bottom: 15%;
+  }
   
   #title {
-    font-size: 12px;
+    font-size: 20px;
     text-align: center;
     justify-self : center ;
+  }
+
+  label{
+    font-size: 12px;
   }
   
   .searchBar {
@@ -343,6 +448,14 @@ img{
 
   #search {
     width: 90%;
+  }
+
+   input::placeholder{
+ font-size: 12px;
+}
+
+  input{
+    font-size: 12px;
   }
 
   #event{
@@ -361,8 +474,10 @@ img{
 }
 
 .image{
-  margin-bottom: 15%;
-  width: 60vw ;
+  min-width: 0;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 5%;
 }
 
 .boiteText{

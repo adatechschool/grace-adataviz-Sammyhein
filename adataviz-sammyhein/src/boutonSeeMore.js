@@ -6,7 +6,7 @@ export function createBoutonSeeMore (descriptionText, boite){
 
     //Click bouton See More
     boutonSeeMore.addEventListener("click", () =>{
-        console.log("Hello World")
+        //console.log("Hello World")
 
         //Faire disparaitre le bouton
         boutonSeeMore.hidden = true
@@ -27,7 +27,7 @@ export function createBoutonSeeMore (descriptionText, boite){
 
         //Click Bouton See Less
         boutonSeeLess.addEventListener("click", () => {
-            console.log("Hello World")
+            //console.log("Hello World")
 
             boutonSeeLess.hidden = true
 

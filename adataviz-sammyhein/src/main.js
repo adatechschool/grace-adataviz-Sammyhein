@@ -31,7 +31,7 @@ async function fetchApi() {
         let hasResults = false //ceci va me servir quand il n'y aura pas de résultat
 
         events.forEach( input =>{
-            const isVisible = input.titre.toLowerCase().includes(value)
+            const isVisible = input.titre.toLowerCase().includes(value) || input.lieu.toLowerCase().includes(value) || input.adresse.toLowerCase().includes(value) || input.ville.toLowerCase().includes(value)
             input.element.classList.toggle("hide", !isVisible)
             //console.log(events)
             if (isVisible){
@@ -54,15 +54,25 @@ async function fetchApi() {
 
       //je définie mes éléments que j'ai mis dans le template HTML
       const boite = currentEvent.querySelector(".boite");
-      const title = currentEvent.querySelector(".title");
-      const dateStart = currentEvent.querySelector(".dateStart")
-      const dateEnd = currentEvent.querySelector(".dateEnd")
-      const text = currentEvent.querySelector(".text");
       const img = currentEvent.querySelector(".image");
+      const tagName = currentEvent.querySelector(".tagName")
+      const lieu = currentEvent.querySelector(".lieu");
+      const title = currentEvent.querySelector(".title");
+      const adress = currentEvent.querySelector(".adress");
+      const dateStart = currentEvent.querySelector(".dateStart");
+      const dateEnd = currentEvent.querySelector(".dateEnd");
+      const text = currentEvent.querySelector(".text");
 
       // je remplie les éléments
       img.src = evenement.cover_url;
+
+
+
+      lieu.textContent = evenement.address_name
+
       title.textContent = evenement.title;
+
+      adress.textContent = `${evenement.address_street}, ${evenement.address_zipcode} ${evenement.address_city}`
 
       if(evenement.date_start != null){
         //Cette partie je formate les dates pour l'afficher commme je le souhaite et l'heure
@@ -95,7 +105,7 @@ async function fetchApi() {
       event.appendChild(currentEvent);
 
       // On demande ce qu'il nous retourne
-      return { image : evenement.cover_url , titre : evenement.title , text : evenement.lead_text , element : boite}
+      return { image : evenement.cover_url , titre : evenement.title , text : evenement.lead_text , lieu : evenement.address_name, adresse : evenement.address_street, ville : evenement.address_city , element : boite}
       
     });
 
