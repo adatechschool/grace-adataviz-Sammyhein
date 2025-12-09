@@ -2,6 +2,7 @@ import './style.css'
 import { createBoutonSeeMore } from './boutonSeeMore.js';
 import { showReturnBouton } from './returnBouton.js';
 import { favorite } from './favoritebutton.js';
+import { filtreFavoris } from './filtreFavoris.js';
 //import { chargerPlus } from '../chargerPlus.js';
 
 
@@ -9,12 +10,14 @@ const event = document.getElementById('event')
 const eventTemplate = document.querySelector("[data-event-template]")
 const searchInput = document.getElementById("search")
 const returnBouton = document.getElementById("returnBouton")
+const erreurFavoris = document.getElementById("erreurFavoris")
 
 // https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/que-faire-a-paris-/records?limit=20
 
 let limit = 20
 let offset = 0
 let events = []
+let counter = {value : 0}
 
 async function fetchApi() {
   try {
@@ -45,6 +48,7 @@ async function fetchApi() {
           //console.log("erreur")
           returnBouton.hidden = false
           showReturnBouton(searchInput)
+          erreurFavoris.hidden = true
         }
     })
     
@@ -65,7 +69,6 @@ async function fetchApi() {
       const dateEnd = currentEvent.querySelector(".dateEnd");
       const text = currentEvent.querySelector(".text");
   
-
       // je remplie les éléments
       img.src = evenement.cover_url;
 
@@ -79,7 +82,12 @@ async function fetchApi() {
         tags.appendChild(tag)
       }}
 
-      favorite(favoris)
+      // cette partie c'est pour le bouton favoris ! Initialement, chaque cartes ne sont pas considéré comme "favoris"
+      // On fait en sorte qu'il devienne favoris quand on appuie sur le bouton (voir la fiche favoritebutton)
+
+      boite.dataset.favori = "false"
+      favorite(favoris, counter, boite)
+      
 
       lieu.textContent = evenement.address_name
 
@@ -124,6 +132,9 @@ async function fetchApi() {
       return { image : evenement.cover_url , tagName : evenement.qfap_tags, titre : evenement.title , text : evenement.lead_text , lieu : evenement.address_name, adresse : evenement.address_street, ville : evenement.address_city , element : boite}
       
     });
+
+    //j'active mon filtre Favoris, il faut que je le fasse en dehors de la boucle pour que ça marche
+      filtreFavoris(events, counter)
 
 
     return apiData;

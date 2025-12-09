@@ -18,6 +18,7 @@
         <div class = "searchBar">
           <label for="search">Vous recherchez un événement en particulier ?</label>
           <input type="search" placeholder="Rechercher" id = "search">
+          <button class="filtreFavoris"></button>
         </div>
     </div>
     </header>
@@ -51,6 +52,12 @@
       <h3 id = "texteColor">Appuyez sur le bouton pour refaire votre recherche !</h3>
       <button id ="boutonRetour">Retour</button>
     </div>
+
+    <!-- QUAND FAVORIS EST CLIQUÉ MAIS QU'IL Y EN A 0 -->
+     <div id = "erreurFavoris" hidden>
+      <h2 id="texteErreur"> Oups ! <br> Vous n'avez pas encore d'événements en favoris !</h2>
+      <h3 id = "textConseil"> Appuyez sur "Favoris" une nouvelle fois pour revoir les propositions !</h3>
+     </div>
 
      <!-- BOUTON CHARGER PLUS -->
     <!-- <div>
