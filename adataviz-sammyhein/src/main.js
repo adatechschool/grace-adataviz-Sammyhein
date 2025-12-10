@@ -89,7 +89,7 @@ async function fetchApi() {
       favorite(favoris, counter, boite)
       
 
-      lieu.textContent = evenement.address_name
+      // lieu.textContent = evenement.address_name
 
       title.textContent = evenement.title;
 
